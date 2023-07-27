@@ -4,13 +4,17 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import GitHubIcon from "@mui/icons-material/GitHub"
 import EmailIcon from "@mui/icons-material/Email"
 import LocationOnIcon from '@mui/icons-material/LocationOn'
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+import { indigo, grey } from '@mui/material/colors';
 
 
 
-
-
-
-const Typewritter = () => {
+const Banner = () => {
   const careers = ['Physicist', 'Researcher', 'AI Developer', 'Data Scientist'];
   return (
     <Typography
@@ -41,7 +45,7 @@ const Typewritter = () => {
 
 
 
-const Profile = () => {
+const Profile = ({ theme }) => {
   return (
     <Box sx={{
       display: 'flex',
@@ -61,13 +65,13 @@ const Profile = () => {
       </IconButton>
       <Stack direction="row" spacing={1}>
         <IconButton aria-label="Github" href='https://github.com/rickypang0219'>
-          <GitHubIcon sx={{ color: 'black' }} />
+          {theme.palette.mode === 'dark' ? <GitHubIcon sx={{ color: 'white' }} /> : <GitHubIcon sx={{ color: 'black' }} />}
         </IconButton>
         <IconButton aria-label="linkedin" href='https://www.linkedin.com/in/ka-chun-pang-674269229/'>
-          <LinkedInIcon sx={{ color: 'black' }} />
+          {theme.palette.mode === 'dark' ? <LinkedInIcon sx={{ color: 'white' }} /> : <LinkedInIcon sx={{ color: 'black' }} />}
         </IconButton>
         <IconButton variant="contained" color="primary" component="a" href="mailto:kcpangac@connect.ust.hk">
-          <EmailIcon sx={{ color: 'black' }} />
+          {theme.palette.mode === 'dark' ? <EmailIcon sx={{ color: 'white' }} /> : <EmailIcon sx={{ color: 'black' }} />}
         </IconButton>
       </Stack>
     </Box>
@@ -75,18 +79,389 @@ const Profile = () => {
 }
 
 
+const Employment = ({ theme }) => {
+  return (
+    <Box p={5} sx={{
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
+      <Typography sx={{ fontSize: 50, fontWeight: 'bold' }} > Employment </Typography>
+      <Timeline
+        sx={{
+          [`& .${timelineItemClasses.root}:before`]: {
+            flex: 0,
+            padding: 0,
+          },
+        }}
+      >
+        <TimelineItem>
+          <TimelineSeparator>
+            <TimelineDot variant="outlined" sx={{ height: 10, width: 10 }} />
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Typography>
+              <span style={{ fontSize: 20 }}>Graduate Research Assistant</span> <br />
+              <span style={{ color: grey[500] }}> SEPT. 2022 - MAY 2023 </span>
+            </Typography>
+            <br />
+            <Box
+              sx={{
+                backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'light',
+                boxShadow: 3,
+                width: "100%", display: 'flex', flexWrap: 'wrap'
+              }}
+              borderRadius={2} p={2}
+            >
+              <Box sx={{
+                justifyContent: 'center',
+                backgroundImage: 'linear-gradient(to right, #3f51b5, #2196f3)',
+                padding: "8px 15px",
+                borderRadius: 10,
+                textAlign: 'center',
+                display: 'inline-flex',
+                height: 7
+              }} p={1}>
+                <Typography sx={{ fontSize: 12, alignSelf: 'center' }} >
+                  <span style={{ color: "#FFFFFF", fontWeight: 'bold' }}>FULL-TIME</span>
+                </Typography>
+              </Box>
+              <br />
+              <br />
+              <Grid container spacing={2} wrap="wrap" display="flex">
+                <Grid item xs={12} sm={6}>
+                  <Typography style={{ align: "center", fontWeight: 'bold', fontSize: 30 }}>
+                    Research Assistant <br />
+                    Department of Physics, HKUST
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography component="ul">
+                    <Typography component="li"> Build classification model to investigat client loss with Artifical Neural Network </Typography>
+                    <Typography component="li"> Levergaed LSTM RNN to forecast time series </Typography>
+                    <Typography component="li"> Collaborated in an international research group</Typography>
+                  </Typography>
+                </Grid>
+              </Grid>
+
+            </Box>
+            <br />
+            <br />
+          </TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+          <TimelineSeparator>
+            <TimelineDot variant="outlined" sx={{ height: 10, width: 10 }} />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Typography>
+              <span style={{ fontSize: 20 }}>Graduate Researcher </span> <br />
+              <span style={{ color: grey[500] }}> SEPT. 2020 - AUG. 2022 </span>
+            </Typography>
+            <br />
+            <Box sx={{
+              backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'light',
+              boxShadow: 3,
+              width: "100%"
+            }} borderRadius={2} p={2} >
+              <Box sx={{
+                justifyContent: 'center',
+                backgroundImage: 'linear-gradient(to right, #3f51b5, #2196f3)',
+                padding: "8px 15px",
+                borderRadius: 10,
+                textAlign: 'center',
+                display: 'inline-flex',
+                height: 7
+              }}>
+                <Typography sx={{ fontSize: 12, alignSelf: 'center' }}>
+                  <span style={{ color: "#FFFFFF", fontWeight: 'bold' }}>FULL-TIME</span>
+                </Typography>
+              </Box>
+              <br />
+              <br />
+              <Grid container spacing={2} wrap="wrap" display="flex">
+                <Grid item xs={12} sm={6}>
+                  <Typography style={{ align: "center", fontWeight: 'bold', fontSize: 30 }}>
+                    Graduate Researcher <br />
+                    Department of Physics, HKUST
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography component="ul">
+                    <Typography component="li"> Build classification model to investigat client loss with Artifical Neural Network </Typography>
+                    <Typography component="li"> Levergaed LSTM RNN to forecast time series </Typography>
+                    <Typography component="li"> Collaborated in an international research group</Typography>
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Box>
+          </TimelineContent>
+        </TimelineItem>
+      </Timeline>
+    </Box>
+  )
+}
 
 
-const Home = () => {
+const Education = ({ theme }) => {
+  return (
+    <Box p={5}>
+      <Typography sx={{ fontSize: 50, fontWeight: 'bold' }} > Education </Typography>
+      <Timeline
+        sx={{
+          [`& .${timelineItemClasses.root}:before`]: {
+            flex: 0,
+            padding: 0,
+          },
+        }}
+      >
+        <TimelineItem>
+          <TimelineSeparator>
+            <TimelineDot variant="outlined" sx={{ height: 10, width: 10 }} />
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Box sx={{
+              backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'light',
+              boxShadow: 3,
+              width: "100%"
+            }} borderRadius={2} p={2} >
+              <Box sx={{
+                justifyContent: 'center',
+                backgroundImage: 'linear-gradient(to right, #3f51b5, #2196f3)',
+                padding: "8px 15px",
+                borderRadius: 10,
+                textAlign: 'center',
+                display: 'inline-flex',
+                height: 7
+              }} p={1}>
+                <Typography sx={{ fontSize: 12, alignSelf: 'center' }} >
+                  <span style={{ color: "#FFFFFF", fontWeight: 'bold' }}>SEPT. 2020 - JUNE 2023</span>
+                </Typography>
+              </Box>
+              <br />
+              <br />
+              <Grid container spacing={2} wrap="wrap" display="flex">
+                <Grid item xs={12} sm={6}>
+                  <Typography style={{ align: "center" }}>
+                    <span style={{ fontWeight: 'bold', fontSize: 30 }}> Hong Kong University of Science and Technology</span> <br />
+                    Master of Philosophy in Physics
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography component="ul">
+                    <Typography component="li"> Build classification model to investigat client loss with Artifical Neural Network </Typography>
+                    <Typography component="li"> Levergaed LSTM RNN to forecast time series </Typography>
+                    <Typography component="li"> Collaborated in an international research group</Typography>
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Box>
+            <br />
+            <br />
+          </TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+          <TimelineSeparator>
+            <TimelineDot variant="outlined" sx={{ height: 10, width: 10 }} />
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Box sx={{
+              backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'light',
+              boxShadow: 3,
+              width: "100%"
+            }} borderRadius={2} p={2} >
+              <Box sx={{
+                justifyContent: 'center',
+                backgroundImage: 'linear-gradient(to right, #3f51b5, #2196f3)',
+                padding: "8px 15px",
+                borderRadius: 10,
+                textAlign: 'center',
+                display: 'inline-flex',
+                height: 7
+              }} p={1}>
+                <Typography sx={{ fontSize: 12, alignSelf: 'center' }} >
+                  <span style={{ color: "#FFFFFF", fontWeight: 'bold' }}>SEPT. 2016 - AUG. 2020</span>
+                </Typography>
+              </Box>
+              <br />
+              <br />
+              <Grid container spacing={2} wrap="wrap" display="flex">
+                <Grid item xs={12} sm={6}>
+                  <Typography style={{ align: "center" }}>
+                    <span style={{ fontWeight: 'bold', fontSize: 30 }}> Hong Kong University of Science and Technology</span> <br />
+                    Bachelor of Science, Physics (Upper-Second Class Honors)
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography style={{ fontWeight: 'bold' }}>
+                    IT related fields
+                  </Typography>
+                  <Typography component="ul">
+                    <Typography component="li"> Scientific simulation using Python</Typography>
+                    <Typography component="li"> Data visualization using Seaborn and Matplolib </Typography>
+                  </Typography>
+                  <Typography style={{ fontWeight: 'bold' }}>
+                    Quant related fields
+                  </Typography>
+                  <Typography component="ul">
+                    <Typography component="li"> Studied Advanced Partial Differential Euqations courses</Typography>
+                    <Typography component="li"> Solving Partial Differential Euqations with Python</Typography>
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Box>
+            <br />
+            <br />
+          </TimelineContent>
+        </TimelineItem>
+        <TimelineItem>
+          <TimelineSeparator>
+            <TimelineDot variant="outlined" sx={{ height: 10, width: 10 }} />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Box sx={{
+              backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'light',
+              boxShadow: 3,
+              width: "100%"
+            }} borderRadius={2} p={2} >
+              <Box sx={{
+                justifyContent: 'center',
+                backgroundImage: 'linear-gradient(to right, #3f51b5, #2196f3)',
+                padding: "8px 15px",
+                borderRadius: 10,
+                textAlign: 'center',
+                display: 'inline-flex',
+                height: 7
+              }} p={1}>
+                <Typography sx={{ fontSize: 12, alignSelf: 'center' }} >
+                  <span style={{ color: "#FFFFFF", fontWeight: 'bold' }}>JUNE 2020</span>
+                </Typography>
+              </Box>
+              <br />
+              <br />
+              <Grid container spacing={2} wrap="wrap" display="flex">
+                <Grid item xs={12} sm={6}>
+                  <Typography style={{ align: "center" }}>
+                    <span style={{ fontWeight: 'bold', fontSize: 30 }}> Conseil Européen pour la Recherche Nucléaire (CERN)</span> <br />
+                    Summer Research Student
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <Typography component="ul">
+                    <Typography component="li"> Selected out of over 4200 worldwide applicants </Typography>
+                    <Typography component="li"> Participated in statistical inference in particle simulation </Typography>
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Box>
+            <br />
+            <br />
+          </TimelineContent>
+        </TimelineItem>
+      </Timeline>
+
+    </Box>
+  )
+}
+
+
+const Intro = () => {
+  return (
+    <Box padding={2}>
+      <Banner />
+      <Typography sx={{ fontSize: 20 }} textAlign="justify" >
+        An aspiring physics M.Phil graduate of HKUST. Hands on experience on scientific simulation,
+        Deep learning application, and data science projects. An Enthusiastic person who loves learning what I am curious.
+        Insterested in absoring knowledges and sharing ideas to everyone.
+      </Typography>
+      <br />
+      <i class="devicon-c-plain colored" style={{ fontSize: 70 }} ></i>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+        style={{ width: 70, height: 70 }} />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+        style={{ width: 70, height: 70 }} />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+        style={{ width: 70, height: 70 }} />
+      <i class="devicon-html5-plain colored" style={{ fontSize: 70 }} ></i>
+      <i class="devicon-css3-plain colored" style={{ fontSize: 70 }} ></i>
+      <i class="devicon-react-original colored" style={{ fontSize: 70 }} ></i>
+      <i class="devicon-vim-plain colored" style={{ fontSize: 70 }} ></i>
+    </Box>
+  )
+}
+
+
+
+
+
+const Home = ({ theme }) => {
   return (
     <Grid container style={{ flexWrap: "wrap" }} >
       <Grid item xs={12} md={3}>
-        < Profile />
+        < Profile theme={theme} />
       </Grid>
 
-      <Grid item xs={12} md={9}>
-        <Typewritter />
+      {/* <Grid item xs={12} md={9} style={{ overflow: 'auto', height: '100%', }}>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: 'column',  // Column or Row?
+          justifyContent: 'left',
+          alignItems: 'left',
+          minHeight: '40vh',
+        }}>
+          <Grid item>
+            <Intro />
+            <Employment />
+            <Education />
+          </Grid>
+        </Box>
+      </Grid> */}
+      <Grid item xs={12} md={9} style={{  padding: 0 }} >
+        <Box sx={{
+          height: '100vh',
+          overflow: 'auto',
+          display: 'flex',
+          flexDirection: 'column',  // Column or Row?
+          justifyContent: 'left',
+          alignItems: 'left',
+          minHeight: '40vh',
+        }}>
+
+          {/* About Me Part */}
+          <Grid item >
+            <Box p={5}>
+              < Banner />
+              <Typography sx={{ fontSize: 20 }} textAlign="justify" >
+                An aspiring physics M.Phil graduate of HKUST. Hands on experience on scientific simulation,
+                Deep learning application, and data science projects. An Enthusiastic person who loves learning what I am curious.
+                Insterested in absoring knowledges and sharing ideas to everyone.
+              </Typography>
+              <br />
+
+              <i class="devicon-c-plain colored" style={{ fontSize: 70 }} ></i>
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                style={{ width: 70, height: 70 }} />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                style={{ width: 70, height: 70 }} />
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                style={{ width: 70, height: 70 }} />
+              <i class="devicon-html5-plain colored" style={{ fontSize: 70 }} ></i>
+              <i class="devicon-css3-plain colored" style={{ fontSize: 70 }} ></i>
+              <i class="devicon-react-original colored" style={{ fontSize: 70 }} ></i>
+              <i class="devicon-vim-plain colored" style={{ fontSize: 70 }} ></i>
+
+            </Box>
+            <Employment theme={theme} />
+            <Education theme={theme} />
+          </Grid>
+
+
+        </Box>
       </Grid>
+
+
     </Grid>
   );
 }
