@@ -5,7 +5,7 @@ export default function Hello () {
   return (
   <Box>
       <Typography> 
-        Hello World 
+        <span></span> Hello World 
       </Typography>
   </Box>
   );
