@@ -398,39 +398,17 @@ const Intro = () => {
 
 const Home = ({ theme }) => {
   return (
-    <Grid container style={{ flexWrap: "wrap" }} >
+    <Grid container  >
       <Grid item xs={12} md={3}>
+        <Box sx={{
+          position:'static',
+          flexDirection: 'column',  // Column or Row?
+          justifyContent: 'center'}}>
         < Profile theme={theme} />
+        </Box>
       </Grid>
 
-      {/* <Grid item xs={12} md={9} style={{ overflow: 'auto', height: '100%', }}>
-        <Box sx={{
-          display: 'flex',
-          flexDirection: 'column',  // Column or Row?
-          justifyContent: 'left',
-          alignItems: 'left',
-          minHeight: '40vh',
-        }}>
-          <Grid item>
-            <Intro />
-            <Employment />
-            <Education />
-          </Grid>
-        </Box>
-      </Grid> */}
-      <Grid item xs={12} md={9} style={{  padding: 0 }} >
-        <Box sx={{
-          height: '100vh',
-          overflow: 'auto',
-          display: 'flex',
-          flexDirection: 'column',  // Column or Row?
-          justifyContent: 'left',
-          alignItems: 'left',
-          minHeight: '40vh',
-        }}>
-
-          {/* About Me Part */}
-          <Grid item >
+      <Grid item xs={12} md={9} >
             <Box p={5}>
               < Banner />
               <Typography sx={{ fontSize: 20 }} textAlign="justify" >
@@ -439,7 +417,6 @@ const Home = ({ theme }) => {
                 Insterested in absoring knowledges and sharing ideas to everyone.
               </Typography>
               <br />
-
               <i class="devicon-c-plain colored" style={{ fontSize: 70 }} ></i>
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
                 style={{ width: 70, height: 70 }} />
@@ -455,10 +432,7 @@ const Home = ({ theme }) => {
             </Box>
             <Employment theme={theme} />
             <Education theme={theme} />
-          </Grid>
 
-
-        </Box>
       </Grid>
 
 

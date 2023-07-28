@@ -104,7 +104,7 @@ export default function Navbar({ colorMode, theme }) {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" >
       <Container maxWidth="xl">
         <Toolbar disableGutters >
           <CodeIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />

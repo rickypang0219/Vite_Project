@@ -80,6 +80,7 @@ const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
 
 export default function ToggleColorMode() {
+  const [wrappedScreen, setWrappedScreen] = React.useState(null);
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)', { noSsr: true });
 
   const [mode, setMode] = React.useState(prefersDarkMode ? 'dark' : 'light');
@@ -106,14 +107,14 @@ export default function ToggleColorMode() {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-          <Grid container style={{width: '100vw' }} >
-            <Grid item xs={12}>
-              <Navbar colorMode={colorMode} theme={theme} />
-            </Grid>
-            <Grid item>
-              <Home theme ={theme} />
-            </Grid>
+        <Grid container style={{ width: '100vw' }} >
+          <Grid item xs={12}>
+            <Navbar colorMode={colorMode} theme={theme} />
           </Grid>
+          <Box>
+          <Home theme={theme} />
+          </Box>
+        </Grid>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
