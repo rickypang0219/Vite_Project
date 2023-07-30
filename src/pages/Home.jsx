@@ -1,4 +1,5 @@
-import { Grid, Box, Typography, Avatar, IconButton, Stack } from '@mui/material';
+import * as React from 'react';
+import { Grid, Box, Typography, Avatar, IconButton, Stack, Paper } from '@mui/material';
 import { Typewriter } from 'react-simple-typewriter';
 import LinkedInIcon from "@mui/icons-material/LinkedIn"
 import GitHubIcon from "@mui/icons-material/GitHub"
@@ -10,7 +11,11 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import { indigo, grey } from '@mui/material/colors';
+import { indigo, grey, red } from '@mui/material/colors';
+// import TimeConnector from '../components/TimelineConnector';
+
+// Animation 
+import { useTransform, motion, useScroll } from "framer-motion"
 
 
 
@@ -80,6 +85,57 @@ const Profile = ({ theme }) => {
 
 
 const Employment = ({ theme }) => {
+  const [isCenter, setIsCenter] = React.useState(false);
+  // const connectorRef = React.useRef(null);
+  const MotionBox = motion(Box);
+
+  // React.useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+
+  //       if (entry.boundingClientRect.y >= window.innerHeight / 4) {
+  //         setIsCenter(true);
+  //       } else if (entry.boundingClientRect.y >= window.innerHeight)  {
+  //         setIsCenter(false);
+  //       }
+  //     },
+  //     {
+  //       root: null,
+  //       rootMargin: '0px',
+  //       threshold: 0
+  //     }
+  //   );
+
+  //   if (connectorRef.current) {
+  //     observer.observe(connectorRef.current);
+  //   }
+
+  //   return () => {
+  //     if (connectorRef.current) {
+  //       observer.unobserve(connectorRef.current);
+  //     }
+  //   };
+  // }, []);
+  React.useEffect(() => {
+    function handleScroll() {
+      const centerOfScreen = window.innerHeight / 2;
+      const connectorTop = connectorRef.current.getBoundingClientRect().top;
+      const connectorBottom = connectorRef.current.getBoundingClientRect().bottom;
+      const connectorCenter = (connectorTop + connectorBottom) / 2
+
+      if (connectorCenter <= centerOfScreen) {
+        setIsCenter(true);
+      } else if (connectorBottom >= centerOfScreen) {
+        setIsCenter(false);
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  const connectorRef = React.useRef(null);
+
+
   return (
     <Box p={5} sx={{
       display: 'flex',
@@ -97,7 +153,11 @@ const Employment = ({ theme }) => {
         <TimelineItem>
           <TimelineSeparator>
             <TimelineDot variant="outlined" sx={{ height: 10, width: 10 }} />
-            <TimelineConnector />
+            <TimelineConnector ref={connectorRef}
+              style={{
+                backgroundColor: isCenter ? '#2196f3' : '#818181', width: 10, alignItems: 'center',
+                borderRadius: 10
+              }} />
           </TimelineSeparator>
           <TimelineContent>
             <Typography>
@@ -105,14 +165,15 @@ const Employment = ({ theme }) => {
               <span style={{ color: grey[500] }}> SEPT. 2022 - MAY 2023 </span>
             </Typography>
             <br />
-            <Box
+            <MotionBox whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
               sx={{
-                backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'light',
+                backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'background.paper',
                 boxShadow: 3,
                 width: "100%", display: 'flex', flexWrap: 'wrap'
               }}
-              borderRadius={2} p={2}
-            >
+              borderRadius={2} p={2} >
+              <Paper />
               <Box sx={{
                 justifyContent: 'center',
                 backgroundImage: 'linear-gradient(to right, #3f51b5, #2196f3)',
@@ -144,7 +205,7 @@ const Employment = ({ theme }) => {
                 </Grid>
               </Grid>
 
-            </Box>
+            </MotionBox>
             <br />
             <br />
           </TimelineContent>
@@ -159,11 +220,13 @@ const Employment = ({ theme }) => {
               <span style={{ color: grey[500] }}> SEPT. 2020 - AUG. 2022 </span>
             </Typography>
             <br />
-            <Box sx={{
-              backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'light',
-              boxShadow: 3,
-              width: "100%"
-            }} borderRadius={2} p={2} >
+            <MotionBox whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              sx={{
+                backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'background.paper',
+                boxShadow: 3,
+                width: "100%"
+              }} borderRadius={2} p={2} >
               <Box sx={{
                 justifyContent: 'center',
                 backgroundImage: 'linear-gradient(to right, #3f51b5, #2196f3)',
@@ -194,7 +257,7 @@ const Employment = ({ theme }) => {
                   </Typography>
                 </Grid>
               </Grid>
-            </Box>
+            </MotionBox>
           </TimelineContent>
         </TimelineItem>
       </Timeline>
@@ -203,7 +266,31 @@ const Employment = ({ theme }) => {
 }
 
 
+
+
+
 const Education = ({ theme }) => {
+  const MotionBox = motion(Box);
+  const [isCenter, setIsCenter] = React.useState(false);
+  const connectorRef = React.useRef(null);
+
+  React.useEffect(() => {
+    function handleScroll() {
+      const bottomOfWindow = window.scrollY;
+      const centerOfScreen = window.innerHeight / 2;
+      const connectorTop = connectorRef.current.getBoundingClientRect().top;
+      const connectorBottom = connectorRef.current.getBoundingClientRect().bottom;
+      const connectorCenter = (connectorTop + connectorBottom) / 2
+
+      if (connectorTop <= centerOfScreen) {
+        setIsCenter(true);
+      } else {
+        setIsCenter(false);
+      }
+    }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
     <Box p={5}>
       <Typography sx={{ fontSize: 50, fontWeight: 'bold' }} > Education </Typography>
@@ -218,14 +305,23 @@ const Education = ({ theme }) => {
         <TimelineItem>
           <TimelineSeparator>
             <TimelineDot variant="outlined" sx={{ height: 10, width: 10 }} />
-            <TimelineConnector />
+            <TimelineConnector ref={connectorRef} style={{
+              width: 10, alignItems: 'center',
+              borderRadius: 10,
+              backgroundColor: isCenter ? '#2196f3' : '#818181',
+            }} />
           </TimelineSeparator>
-          <TimelineContent>
-            <Box sx={{
-              backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'light',
-              boxShadow: 3,
-              width: "100%"
-            }} borderRadius={2} p={2} >
+          <TimelineContent  >
+            <MotionBox whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              sx={{
+                backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'background.paper',
+                boxShadow: 3,
+                width: "100%",
+                opacity: 1
+              }} borderRadius={2} p={2}
+              
+            >
               <Box sx={{
                 justifyContent: 'center',
                 backgroundImage: 'linear-gradient(to right, #3f51b5, #2196f3)',
@@ -256,22 +352,29 @@ const Education = ({ theme }) => {
                   </Typography>
                 </Grid>
               </Grid>
-            </Box>
+            </MotionBox>
             <br />
             <br />
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
           <TimelineSeparator>
-            <TimelineDot variant="outlined" sx={{ height: 10, width: 10 }} />
-            <TimelineConnector />
+            <TimelineDot variant="outlined" sx={{ height: 15, width: 15 }} />
+            <TimelineConnector ref={connectorRef} style={{
+              width: 10, alignItems: 'center',
+              borderRadius: 10,
+              backgroundColor: isCenter ? '#2196f3' : '#818181',
+            }} />
           </TimelineSeparator>
-          <TimelineContent>
-            <Box sx={{
-              backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'light',
-              boxShadow: 3,
-              width: "100%"
-            }} borderRadius={2} p={2} >
+          <TimelineContent  >
+            <MotionBox whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              sx={{
+                backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'background.paper',
+                boxShadow: 3,
+                width: "100%"
+              }} borderRadius={2} p={2} >
+              <Paper />
               <Box sx={{
                 justifyContent: 'center',
                 backgroundImage: 'linear-gradient(to right, #3f51b5, #2196f3)',
@@ -311,21 +414,28 @@ const Education = ({ theme }) => {
                   </Typography>
                 </Grid>
               </Grid>
-            </Box>
+            </MotionBox>
             <br />
             <br />
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
           <TimelineSeparator>
-            <TimelineDot variant="outlined" sx={{ height: 10, width: 10 }} />
+            <TimelineDot variant="outlined" sx={{ height: 15, width: 15 }} />
+            <TimelineConnector style={{
+              width: 10, alignItems: 'center',
+              borderRadius: 10,
+              backgroundColor: isCenter ? '#2196f3' : '#818181',
+            }} />
           </TimelineSeparator>
-          <TimelineContent>
-            <Box sx={{
-              backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'light',
-              boxShadow: 3,
-              width: "100%"
-            }} borderRadius={2} p={2} >
+          <TimelineContent  >
+            <MotionBox whileHover={{ scale: [null, 1.2, 1.1] }}
+              transition={{ duration: 0.3 }}
+              sx={{
+                backgroundColor: theme.palette.mode === 'dark' ? grey[900] : 'background.paper',
+                boxShadow: 3,
+                width: "100%"
+              }} borderRadius={2} p={2} >
               <Box sx={{
                 justifyContent: 'center',
                 backgroundImage: 'linear-gradient(to right, #3f51b5, #2196f3)',
@@ -355,11 +465,13 @@ const Education = ({ theme }) => {
                   </Typography>
                 </Grid>
               </Grid>
-            </Box>
+            </MotionBox>
             <br />
             <br />
           </TimelineContent>
         </TimelineItem>
+
+
       </Timeline>
 
     </Box>
@@ -401,37 +513,38 @@ const Home = ({ theme }) => {
     <Grid container  >
       <Grid item xs={12} md={3}>
         <Box sx={{
-          position:'static',
+          position: 'static',
           flexDirection: 'column',  // Column or Row?
-          justifyContent: 'center'}}>
-        < Profile theme={theme} />
+          justifyContent: 'center'
+        }}>
+          < Profile theme={theme} />
         </Box>
       </Grid>
 
       <Grid item xs={12} md={9} >
-            <Box p={5}>
-              < Banner />
-              <Typography sx={{ fontSize: 20 }} textAlign="justify" >
-                An aspiring physics M.Phil graduate of HKUST. Hands on experience on scientific simulation,
-                Deep learning application, and data science projects. An Enthusiastic person who loves learning what I am curious.
-                Insterested in absoring knowledges and sharing ideas to everyone.
-              </Typography>
-              <br />
-              <i class="devicon-c-plain colored" style={{ fontSize: 70 }} ></i>
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                style={{ width: 70, height: 70 }} />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
-                style={{ width: 70, height: 70 }} />
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                style={{ width: 70, height: 70 }} />
-              <i class="devicon-html5-plain colored" style={{ fontSize: 70 }} ></i>
-              <i class="devicon-css3-plain colored" style={{ fontSize: 70 }} ></i>
-              <i class="devicon-react-original colored" style={{ fontSize: 70 }} ></i>
-              <i class="devicon-vim-plain colored" style={{ fontSize: 70 }} ></i>
+        <Box p={5}>
+          < Banner />
+          <Typography sx={{ fontSize: 20 }} textAlign="justify" >
+            An aspiring physics M.Phil graduate of HKUST. Hands on experience on scientific simulation,
+            Deep learning application, and data science projects. An Enthusiastic person who loves learning what I am curious.
+            Insterested in absoring knowledges and sharing ideas to everyone.
+          </Typography>
+          <br />
+          <i class="devicon-c-plain colored" style={{ fontSize: 70 }} ></i>
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+            style={{ width: 70, height: 70 }} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+            style={{ width: 70, height: 70 }} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+            style={{ width: 70, height: 70 }} />
+          <i class="devicon-html5-plain colored" style={{ fontSize: 70 }} ></i>
+          <i class="devicon-css3-plain colored" style={{ fontSize: 70 }} ></i>
+          <i class="devicon-react-original colored" style={{ fontSize: 70 }} ></i>
+          <i class="devicon-vim-plain colored" style={{ fontSize: 70 }} ></i>
 
-            </Box>
-            <Employment theme={theme} />
-            <Education theme={theme} />
+        </Box>
+        <Employment theme={theme} />
+        <Education theme={theme} />
 
       </Grid>
 
