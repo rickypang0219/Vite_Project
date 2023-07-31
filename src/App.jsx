@@ -38,19 +38,21 @@ export default function ToggleColorMode() {
   );
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Grid container style={{ width: '100vw' }} >
-          <Grid item xs={12}>
-            <Navbar colorMode={colorMode} theme={theme} />
+    <React.Fragment>
+      <ColorModeContext.Provider value={colorMode}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Grid container style={{ width: '100vw' }}  >
+            <Grid item xs={12}>
+              <Navbar colorMode={colorMode} theme={theme} />
+            </Grid>
+            <Box  >
+              <Home theme={theme} />
+            </Box>
           </Grid>
-          <Box>
-          <Home theme={theme} />
-          </Box>
-        </Grid>
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+        </ThemeProvider>
+      </ColorModeContext.Provider>
+    </React.Fragment>
   );
 }
 

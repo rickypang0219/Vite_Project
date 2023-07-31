@@ -22,28 +22,30 @@ import { useTransform, motion, useScroll } from "framer-motion"
 const Banner = () => {
   const careers = ['Physicist', 'Researcher', 'AI Developer', 'Data Scientist'];
   return (
-    <Typography
-      sx={{ fontSize: 60 }}
-    >
-      <span style={{ fontWeight: 'bold' }}>Ricky Pang</span>, <br />
-      I am a {' '}
-      <span style={{
-        background: 'linear-gradient(to right, #3f51b5, #2196f3)',
-        '-webkit-background-clip': 'text',
-        '-webkit-text-fill-color': 'transparent',
-        fontWeight: 'bold'
-      }}>
-        <Typewriter
-          words={careers}
-          loop={true}
-          cursor
-          cursorStyle="_"
-          typeSpeed={70}
-          deleteSpeed={50}
-          delaySpeed={1000}
-        />
-      </span>
-    </Typography>
+    <Box >
+      <Typography
+        sx={{ fontSize: 60 }}
+      >
+        <span style={{ fontWeight: 'bold' }}>Ricky Pang</span>, <br />
+        I am a {' '}
+        <span style={{
+          background: 'linear-gradient(to right, #3f51b5, #2196f3)',
+          '-webkit-background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+          fontWeight: 'bold'
+        }}>
+          <Typewriter
+            words={careers}
+            loop={true}
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </span>
+      </Typography>
+    </Box>
   )
 }
 
@@ -320,7 +322,7 @@ const Education = ({ theme }) => {
                 width: "100%",
                 opacity: 1
               }} borderRadius={2} p={2}
-              
+
             >
               <Box sx={{
                 justifyContent: 'center',
@@ -515,14 +517,15 @@ const Home = ({ theme }) => {
         <Box sx={{
           position: 'static',
           flexDirection: 'column',  // Column or Row?
-          justifyContent: 'center'
+          justifyContent: 'center',
+          minHeight: '70vh'
         }}>
           < Profile theme={theme} />
         </Box>
       </Grid>
 
       <Grid item xs={12} md={9} >
-        <Box p={5}>
+        <Box p={5} >
           < Banner />
           <Typography sx={{ fontSize: 20 }} textAlign="justify" >
             An aspiring physics M.Phil graduate of HKUST. Hands on experience on scientific simulation,
@@ -541,8 +544,8 @@ const Home = ({ theme }) => {
           <i class="devicon-css3-plain colored" style={{ fontSize: 70 }} ></i>
           <i class="devicon-react-original colored" style={{ fontSize: 70 }} ></i>
           <i class="devicon-vim-plain colored" style={{ fontSize: 70 }} ></i>
-
         </Box>
+
         <Employment theme={theme} />
         <Education theme={theme} />
 
