@@ -13,7 +13,7 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import { indigo, grey, red } from '@mui/material/colors';
 // import TimeConnector from '../components/TimelineConnector';
-import selfImage from '../assets/self.jpg';
+import selfImage from '../assets/self.JPG';
 
 // Animation 
 import { useTransform, motion, useScroll } from "framer-motion"
