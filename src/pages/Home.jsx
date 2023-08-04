@@ -13,6 +13,7 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import { indigo, grey, red } from '@mui/material/colors';
 // import TimeConnector from '../components/TimelineConnector';
+import selfImage from '../assets/self.jpg';
 
 // Animation 
 import { useTransform, motion, useScroll } from "framer-motion"
@@ -55,68 +56,68 @@ const Banner = () => {
 
 const Profile = ({ theme }) => {
   return (
-  <>
-    <Box sx={{
-      flexGrow:1, 
-      display:{ xs:'none', md:'flex'},
-      // display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-      minWidth:'25vw',
-      position:'fixed',
-    }}>
-      <Avatar alt="Ricky Pang" src="src/assets/self.JPG" sx={{ height: 120, width: 120 }}> </Avatar>
-      <br />
-      <Typography sx={{ fontSize: 30, fontWeight: 'bold' }}> Ricky Pang </Typography>
-      <br />
-
-      <IconButton aria-label="location" href='https://www.google.com.hk/maps/@22.352734,114.1277,11z'>
-        <LocationOnIcon sx={{ color: 'red' }} />
-        <Typography> Hong Kong</Typography>
-      </IconButton>
-      <Stack direction="row" spacing={1}>
-        <IconButton aria-label="Github" href='https://github.com/rickypang0219'>
-          {theme.palette.mode === 'dark' ? <GitHubIcon sx={{ color: 'white' }} /> : <GitHubIcon sx={{ color: 'black' }} />}
-        </IconButton>
-        <IconButton aria-label="linkedin" href='https://www.linkedin.com/in/ka-chun-pang-674269229/'>
-          {theme.palette.mode === 'dark' ? <LinkedInIcon sx={{ color: 'white' }} /> : <LinkedInIcon sx={{ color: 'black' }} />}
-        </IconButton>
-        <IconButton variant="contained" color="primary" component="a" href="mailto:rickypang_aidev@outlook.com">
-          {theme.palette.mode === 'dark' ? <EmailIcon sx={{ color: 'white' }} /> : <EmailIcon sx={{ color: 'black' }} />}
-        </IconButton>
-      </Stack>
-    </Box>
-    <Box sx={{ 
-        flexGrow:1,
-        display:{xs:'flex', md:'none'},
-        justifyContent:'center',
-        alignItems:'center',
-        height:'40vh',
+    <>
+      <Box sx={{
+        flexGrow: 1,
+        display: { xs: 'none', md: 'flex' },
+        // display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        minWidth: '25vw',
+        position: 'fixed',
       }}>
-      <Stack direction="row" spacing={2} style={{ alignItems:'center' }} >
-      <Avatar alt="Ricky Pang" src="src/assets/self.JPG" sx={{ height: 120, width: 120 }}> </Avatar>
-      <Box direction="row" useFlexGap flexWrap='wrap'> 
-        <Stack direction='column' spacing={2}> 
-         <Typography sx={{ fontSize: 30, fontWeight: 'bold' }}> Ricky Pang </Typography>
-         <Box spacing={2}>
-            <IconButton aria-label="Github" href='https://github.com/rickypang0219'>
-              {theme.palette.mode === 'dark' ? <GitHubIcon sx={{ color: 'white' }} /> : <GitHubIcon sx={{ color: 'black' }} />}
-            </IconButton>
-            <IconButton aria-label="linkedin" href='https://www.linkedin.com/in/ka-chun-pang-674269229/'>
-              {theme.palette.mode === 'dark' ? <LinkedInIcon sx={{ color: 'white' }} /> : <LinkedInIcon sx={{ color: 'black' }} />}
-            </IconButton>
-            <IconButton variant="contained" color="primary" component="a" href="mailto:rickypang_aidev@outlook.com">
-              {theme.palette.mode === 'dark' ? <EmailIcon sx={{ color: 'white' }} /> : <EmailIcon sx={{ color: 'black' }} />}
-            </IconButton>
-        </Box>     
+        <Avatar alt="Ricky Pang" src={selfImage} sx={{ height: 120, width: 120 }}> </Avatar>
+        <br />
+        <Typography sx={{ fontSize: 30, fontWeight: 'bold' }}> Ricky Pang </Typography>
+        <br />
+
+        <IconButton aria-label="location" href='https://www.google.com.hk/maps/@22.352734,114.1277,11z'>
+          <LocationOnIcon sx={{ color: 'red' }} />
+          <Typography> Hong Kong</Typography>
+        </IconButton>
+        <Stack direction="row" spacing={1}>
+          <IconButton aria-label="Github" href='https://github.com/rickypang0219'>
+            {theme.palette.mode === 'dark' ? <GitHubIcon sx={{ color: 'white' }} /> : <GitHubIcon sx={{ color: 'black' }} />}
+          </IconButton>
+          <IconButton aria-label="linkedin" href='https://www.linkedin.com/in/ka-chun-pang-674269229/'>
+            {theme.palette.mode === 'dark' ? <LinkedInIcon sx={{ color: 'white' }} /> : <LinkedInIcon sx={{ color: 'black' }} />}
+          </IconButton>
+          <IconButton variant="contained" color="primary" component="a" href="mailto:rickypang_aidev@outlook.com">
+            {theme.palette.mode === 'dark' ? <EmailIcon sx={{ color: 'white' }} /> : <EmailIcon sx={{ color: 'black' }} />}
+          </IconButton>
         </Stack>
       </Box>
-      </Stack>
+      <Box sx={{
+        flexGrow: 1,
+        display: { xs: 'flex', md: 'none' },
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '40vh',
+      }}>
+        <Stack direction="row" spacing={2} style={{ alignItems: 'center' }} >
+          <Avatar alt="Ricky Pang" src={selfImage} sx={{ height: 120, width: 120 }}> </Avatar>
+          <Box direction="row" useFlexGap flexWrap='wrap'>
+            <Stack direction='column' spacing={2}>
+              <Typography sx={{ fontSize: 30, fontWeight: 'bold' }}> Ricky Pang </Typography>
+              <Box spacing={2}>
+                <IconButton aria-label="Github" href='https://github.com/rickypang0219'>
+                  {theme.palette.mode === 'dark' ? <GitHubIcon sx={{ color: 'white' }} /> : <GitHubIcon sx={{ color: 'black' }} />}
+                </IconButton>
+                <IconButton aria-label="linkedin" href='https://www.linkedin.com/in/ka-chun-pang-674269229/'>
+                  {theme.palette.mode === 'dark' ? <LinkedInIcon sx={{ color: 'white' }} /> : <LinkedInIcon sx={{ color: 'black' }} />}
+                </IconButton>
+                <IconButton variant="contained" color="primary" component="a" href="mailto:rickypang_aidev@outlook.com">
+                  {theme.palette.mode === 'dark' ? <EmailIcon sx={{ color: 'white' }} /> : <EmailIcon sx={{ color: 'black' }} />}
+                </IconButton>
+              </Box>
+            </Stack>
+          </Box>
+        </Stack>
 
-    </Box>
-   </> 
+      </Box>
+    </>
   );
 }
 
@@ -555,7 +556,7 @@ const Home = ({ theme }) => {
         {/*   justifyContent: 'center', */}
         {/*   minHeight: '70vh' */}
         {/* }}> */}
-          < Profile theme={theme} />
+        < Profile theme={theme} />
         {/* </Box> */}
       </Grid>
 
