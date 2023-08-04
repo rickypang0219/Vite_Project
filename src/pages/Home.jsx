@@ -67,7 +67,7 @@ const Profile = ({ theme }) => {
         minWidth: '25vw',
         position: 'fixed',
       }}>
-        <Avatar alt="Ricky Pang" src="/images/self.jpg" sx={{ height: 120, width: 120 }}> </Avatar>
+        <Avatar alt="Ricky Pang" src="/images/self.png" sx={{ height: 120, width: 120 }}> </Avatar>
         <br />
         <Typography sx={{ fontSize: 30, fontWeight: 'bold' }}> Ricky Pang </Typography>
         <br />
@@ -96,7 +96,7 @@ const Profile = ({ theme }) => {
         height: '40vh',
       }}>
         <Stack direction="row" spacing={2} style={{ alignItems: 'center' }} >
-          <Avatar alt="Ricky Pang" src="/images/self.jpg" sx={{ height: 120, width: 120 }}> </Avatar>
+          <Avatar alt="Ricky Pang" src="/images/self.png" sx={{ height: 120, width: 120 }}> </Avatar>
           <Box direction="row" useFlexGap flexWrap='wrap'>
             <Stack direction='column' spacing={2}>
               <Typography sx={{ fontSize: 30, fontWeight: 'bold' }}> Ricky Pang </Typography>
