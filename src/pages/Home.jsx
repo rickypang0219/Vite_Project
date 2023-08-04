@@ -13,7 +13,6 @@ import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import { indigo, grey, red } from '@mui/material/colors';
 // import TimeConnector from '../components/TimelineConnector';
-import selfImage from '../assets/self.JPG';
 
 // Animation 
 import { useTransform, motion, useScroll } from "framer-motion"
@@ -68,7 +67,7 @@ const Profile = ({ theme }) => {
         minWidth: '25vw',
         position: 'fixed',
       }}>
-        <Avatar alt="Ricky Pang" src={selfImage} sx={{ height: 120, width: 120 }}> </Avatar>
+        <Avatar alt="Ricky Pang" src="../assets/self.JPG"  sx={{ height: 120, width: 120 }}> </Avatar>
         <br />
         <Typography sx={{ fontSize: 30, fontWeight: 'bold' }}> Ricky Pang </Typography>
         <br />
@@ -97,7 +96,7 @@ const Profile = ({ theme }) => {
         height: '40vh',
       }}>
         <Stack direction="row" spacing={2} style={{ alignItems: 'center' }} >
-          <Avatar alt="Ricky Pang" src={selfImage} sx={{ height: 120, width: 120 }}> </Avatar>
+          <Avatar alt="Ricky Pang" src="../assets/self.JPG" sx={{ height: 120, width: 120 }}> </Avatar>
           <Box direction="row" useFlexGap flexWrap='wrap'>
             <Stack direction='column' spacing={2}>
               <Typography sx={{ fontSize: 30, fontWeight: 'bold' }}> Ricky Pang </Typography>
