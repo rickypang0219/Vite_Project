@@ -9,6 +9,10 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
+// Testing Module
+import HomeTest from './testing/HomeTest'
+import NavTest from './components/NavTest'
+
 // Correct Code 
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
@@ -42,17 +46,32 @@ export default function ToggleColorMode() {
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Grid container style={{ width: '100vw' }}  >
+          <Grid container  >
             <Grid item xs={12}>
               <Navbar colorMode={colorMode} theme={theme} />
             </Grid>
-            <Box  >
-              <Home theme={theme} />
-            </Box>
+            <br/>
+            <Grid item> 
+              <Home theme={theme } />
+            </Grid>
           </Grid>
+            {/* <Box  > */}
+          {/* <Home theme={theme} /> */}
+            {/* </Box> */}
+          {/* </Grid> */}
         </ThemeProvider>
       </ColorModeContext.Provider>
     </React.Fragment>
   );
 }
 
+
+
+// export default function testWeb () {
+//   return( 
+//     <>
+//       <NavTest/>
+//         <HomeTest /> 
+//     </>
+//   )
+// }
