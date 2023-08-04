@@ -137,30 +137,30 @@ export default function Navbar({ colorMode, theme }) {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            {/* <Menu */}
+            {/*   id="menu-appbar" */}
+            {/*   anchorEl={anchorElNav} */}
+            {/*   anchorOrigin={{ */}
+            {/*     vertical: 'bottom', */}
+            {/*     horizontal: 'left', */}
+            {/*   }} */}
+            {/*   keepMounted */}
+            {/*   transformOrigin={{ */}
+            {/*     vertical: 'top', */}
+            {/*     horizontal: 'left', */}
+            {/*   }} */}
+            {/*   open={Boolean(anchorElNav)} */}
+            {/*   onClose={handleCloseNavMenu} */}
+            {/*   sx={{ */}
+            {/*     display: { xs: 'block', md: 'none' }, */}
+            {/*   }} */}
+            {/* > */}
+            {/*   {pages.map((page) => ( */}
+            {/*     <MenuItem key={page} onClick={handleCloseNavMenu}> */}
+            {/*       <Typography textAlign="center">{page}</Typography> */}
+            {/*     </MenuItem> */}
+            {/*   ))} */}
+            {/* </Menu> */}
           </Box>
           <CodeIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -182,15 +182,15 @@ export default function Navbar({ colorMode, theme }) {
             RICKY
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            {/* {pages.map((page) => ( */}
+            {/*   <Button */}
+            {/*     key={page} */}
+            {/*     onClick={handleCloseNavMenu} */}
+            {/*     sx={{ my: 2, color: 'white', display: 'block' }} */}
+            {/*   > */}
+            {/*     {page} */}
+            {/*   </Button> */}
+            {/* ))} */}
           </Box>
 
           {/* <IconButton
