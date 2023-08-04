@@ -23,7 +23,10 @@ import { Height } from '@mui/icons-material';
 const Banner = () => {
   const careers = ['Physicist', 'Researcher', 'AI Developer', 'Data Scientist'];
   return (
-    <Box >
+  <>
+    <Box sx={{ height:'260px',
+      display:{xs:"flex", md:'none'},
+    }} >
       <Typography
         sx={{ fontSize: 60 }}
       >
@@ -46,7 +49,33 @@ const Banner = () => {
           />
         </span>
       </Typography>
+    <br/>
     </Box>
+    <Box sx={{ 
+      display:{xs:"none", md:'flex'},
+    }} >
+      <Typography sx={{ fontSize: 60 }}>
+        <span style={{ fontWeight: 'bold' }}>Ricky Pang</span>, <br />
+        I am a {' '}
+        <span style={{
+          background: 'linear-gradient(to right, #3f51b5, #2196f3)',
+          '-webkit-background-clip': 'text',
+          '-webkit-text-fill-color': 'transparent',
+          fontWeight: 'bold'
+        }}>
+          <Typewriter
+            words={careers}
+            loop={true}
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1000}
+          />
+        </span>
+      </Typography>
+    </Box>
+    </>
   )
 }
 
@@ -67,24 +96,27 @@ const Profile = ({ theme }) => {
         minWidth: '25vw',
         position: 'fixed',
       }}>
-        <Avatar alt="Ricky Pang" src="/images/self.png" sx={{ height: 120, width: 120 }}> </Avatar>
+        <Avatar alt="Ricky Pang" src="/images/self.png" sx={{ height: 170, width: 170 }}> </Avatar>
         <br />
-        <Typography sx={{ fontSize: 30, fontWeight: 'bold' }}> Ricky Pang </Typography>
+        <Typography sx={{ fontSize: 40, fontWeight: 'bold' }}> Ricky Pang </Typography>
         <br />
 
         <IconButton aria-label="location" href='https://www.google.com.hk/maps/@22.352734,114.1277,11z'>
           <LocationOnIcon sx={{ color: 'red' }} />
-          <Typography> Hong Kong</Typography>
+          <Typography sx={{ fontSize:20}}> Hong Kong</Typography>
         </IconButton>
         <Stack direction="row" spacing={1}>
           <IconButton aria-label="Github" href='https://github.com/rickypang0219'>
-            {theme.palette.mode === 'dark' ? <GitHubIcon sx={{ color: 'white' }} /> : <GitHubIcon sx={{ color: 'black' }} />}
+            {theme.palette.mode === 'dark' ? <GitHubIcon sx={{ color: 'white', fontSize:40 }} /> : 
+              <GitHubIcon sx={{ color: 'black' , fontSize:40 }} />}
           </IconButton>
           <IconButton aria-label="linkedin" href='https://www.linkedin.com/in/ka-chun-pang-674269229/'>
-            {theme.palette.mode === 'dark' ? <LinkedInIcon sx={{ color: 'white' }} /> : <LinkedInIcon sx={{ color: 'black' }} />}
+            {theme.palette.mode === 'dark' ? <LinkedInIcon sx={{ color: 'white', fontSize:40 }} /> : 
+              <LinkedInIcon sx={{ color: 'black', fontSize:40 }} />}
           </IconButton>
           <IconButton variant="contained" color="primary" component="a" href="mailto:rickypang_aidev@outlook.com">
-            {theme.palette.mode === 'dark' ? <EmailIcon sx={{ color: 'white' }} /> : <EmailIcon sx={{ color: 'black' }} />}
+            {theme.palette.mode === 'dark' ? <EmailIcon sx={{ color: 'white', fontSize:40 }} /> :
+              <EmailIcon sx={{ color: 'black', fontSize:40 }} />}
           </IconButton>
         </Stack>
       </Box>
@@ -102,13 +134,16 @@ const Profile = ({ theme }) => {
               <Typography sx={{ fontSize: 30, fontWeight: 'bold' }}> Ricky Pang </Typography>
               <Box spacing={2}>
                 <IconButton aria-label="Github" href='https://github.com/rickypang0219'>
-                  {theme.palette.mode === 'dark' ? <GitHubIcon sx={{ color: 'white' }} /> : <GitHubIcon sx={{ color: 'black' }} />}
+                  {theme.palette.mode === 'dark' ? <GitHubIcon sx={{ color: 'white', fontSize:40 }} /> :
+                    <GitHubIcon sx={{ color: 'black' , fontSize:40 }} />}
                 </IconButton>
                 <IconButton aria-label="linkedin" href='https://www.linkedin.com/in/ka-chun-pang-674269229/'>
-                  {theme.palette.mode === 'dark' ? <LinkedInIcon sx={{ color: 'white' }} /> : <LinkedInIcon sx={{ color: 'black' }} />}
+                  {theme.palette.mode === 'dark' ? <LinkedInIcon sx={{ color: 'white' , fontSize:40 }} /> :
+                    <LinkedInIcon sx={{ color: 'black', fontSize:40 }} />}
                 </IconButton>
                 <IconButton variant="contained" color="primary" component="a" href="mailto:rickypang_aidev@outlook.com">
-                  {theme.palette.mode === 'dark' ? <EmailIcon sx={{ color: 'white' }} /> : <EmailIcon sx={{ color: 'black' }} />}
+                  {theme.palette.mode === 'dark' ? <EmailIcon sx={{ color: 'white', fontSize:40 }} /> : 
+                    <EmailIcon sx={{ color: 'black', fontSize:40 }} />}
                 </IconButton>
               </Box>
             </Stack>
